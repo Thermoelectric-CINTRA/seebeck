@@ -44,4 +44,4 @@ def GateVoltage(address="GPIB0::8", voltage=0):
 
 ThermoelectricVoltage()
 # HeaterCurrentController()
-GateVoltage(voltage=0.55)
+GateVoltage(voltage=0.3)
