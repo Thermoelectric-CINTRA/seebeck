@@ -36,30 +36,10 @@ while gatevoltage <= 3:
         time.sleep(1)
         drainvoltage_min += 0.1
         print("Drain Voltage: ", drainvoltage_min)
-    gatevoltage += 0.2
+    gatevoltage += 0.1
     print("Gate Voltage: ", gatevoltage)
     drainvoltage_min = -0.5 # Drain Voltage Reset Point
     time.sleep(1)
 
 gate.source_voltage = 0
 drain.source_voltage = 0
-
-# datas = pd.read_csv("testing-MOSFET_IdVd.csv")
-# points = 11
-# index = 0
-# x_datas = []
-# y_datas = []
-# print(len(datas))
-# while index <= len(datas):
-#     x_datas.append(datas["Drain_Voltage"][index:index+points])
-#     y_datas.append(datas["Drain_Current"][index:index+points])
-#     index += points
-# index_plot = 0
-# while index_plot <= len(datas)/points-1:
-#     plt.plot(x_datas[index_plot], y_datas[index_plot], label="{}".format(datas["Gate_Voltage"][(points)*index_plot]))
-#     index_plot += 1
-
-# plt.xlabel("Drain voltage (V)")
-# plt.ylabel("Drain Current (A)")
-# plt.legend()
-# plt.show()

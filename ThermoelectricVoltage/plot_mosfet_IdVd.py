@@ -32,9 +32,11 @@ index_plot = 0
 while index_plot <= len(datas)/points-1:
     ax1.plot(x_datas[index_plot], y_datas[index_plot], label="{}".format(datas["Gate_Voltage"][(points)*index_plot]))
     ax1.legend()
-    # ax1.xlabel("Drain Voltage")
+
     index_plot += 1
-
+ax1.set_xlabel("Drain Voltage Vd(V)")
+ax1.set_ylabel("Drain Current Id(A)")
 ax2.plot(x_conductaces, y_conductaces)
-
+ax2.set_xlabel("Gate Voltage Vg(V)")
+ax2.set_ylabel("Conductance G(S)")
 plt.show()
