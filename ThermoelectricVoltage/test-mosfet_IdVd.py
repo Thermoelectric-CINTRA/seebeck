@@ -9,7 +9,12 @@ import numpy as np
 
 gate = Keithley2400("GPIB0::8")
 drain = Keithley2420("GPIB0::6")
+gate.source_voltage = 0
+drain.source_voltage = 0
+drain.compliance_current = 2
+gate.enable_source()
 gate.measure_current()
+drain.enable_source()
 drain.measure_current()
 drainvoltage_min = -0.5
 drainvoltage_max = 0.5
@@ -43,3 +48,5 @@ while gatevoltage <= 3:
 
 gate.source_voltage = 0
 drain.source_voltage = 0
+gate.disable_source()
+drain.disable_source()
