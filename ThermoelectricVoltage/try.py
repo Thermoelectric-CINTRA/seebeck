@@ -1,38 +1,30 @@
-from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog,
-QDialogButtonBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout,
-QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QSpinBox, QTextEdit,
-QVBoxLayout)
-
-import sys
-
-class Dialog(QDialog):
-    NumGridRows = 3
-    NumButtons = 4
-
-    def __init__(self):
-        super(Dialog, self).__init__()
-        self.createFormGroupBox()
-        
-        buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
-        buttonBox.accepted.connect(self.accept)
-        buttonBox.rejected.connect(self.reject)
-        
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.formGroupBox)
-        mainLayout.addWidget(buttonBox)
-        self.setLayout(mainLayout)
-        
-        self.setWindowTitle("Form Layout - pythonspot.com")
-        
-    def createFormGroupBox(self):
-        self.formGroupBox = QGroupBox("Form layout")
-        layout = QFormLayout()
-        layout.addRow(QLabel("Name:"), QLineEdit())
-        layout.addRow(QLabel("Country:"), QComboBox())
-        layout.addRow(QLabel("Age:"), QSpinBox())
-        self.formGroupBox.setLayout(layout)
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    dialog = Dialog()
-    sys.exit(dialog.exec_())
+# fit a straight line to the economic data
+from numpy import arange
+from pandas import read_csv
+from scipy.optimize import curve_fit
+from matplotlib import pyplot
+ 
+# define the true objective function
+def objective(x, a, b):
+ return a * x + b
+ 
+# load the dataset
+url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/longley.csv'
+dataframe = read_csv(url, header=None)
+data = dataframe.values
+# choose the input and output variables
+x, y = data[:, 4], data[:, -1]
+# curve fit
+popt, _ = curve_fit(objective, x, y)
+# summarize the parameter values
+a, b = popt
+print('y = %.5f * x + %.5f' % (a, b))
+# plot input vs output
+pyplot.scatter(x, y)
+# define a sequence of inputs between the smallest and largest known inputs
+x_line = arange(min(x), max(x), 1)
+# calculate the output for the range
+y_line = objective(x_line, a, b)
+# create a line plot for the mapping function
+pyplot.plot(x_line, y_line, '--', color='red')
+pyplot.show()
