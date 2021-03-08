@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QHBoxLayout, QFormLayout, QLabel,
 QLineEdit, QGroupBox, QComboBox, QSpinBox, QWidget, QVBoxLayout, QDialogButtonBox)
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QDoubleValidator
 from PyQt5.QtCore import Qt
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
@@ -38,6 +38,9 @@ class MainWindow(QMainWindow):
         self.gateVoltageStart = QLineEdit()
         self.gateVoltageEnd = QLineEdit()
         self.drainVoltage = QLineEdit()
+        self.gateVoltageStart.setValidator(QDoubleValidator(0.99, 99.99, 2))
+        self.gateVoltageEnd.setValidator(QDoubleValidator(0.99, 99.99, 2))
+        self.drainVoltage.setValidator(QDoubleValidator(0.99, 99.99, 2))
         layout.addRow(QLabel("Gate Voltage (Start Point):"), self.gateVoltageStart)
         layout.addRow(QLabel("Gate Voltage (End Point):"), self.gateVoltageEnd)
         layout.addRow(QLabel("Drain Voltage:"), self.drainVoltage)
