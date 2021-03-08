@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import numpy as np
 
-datas = pd.read_csv("testing-MOSFET_IdVd.csv")
+datas = pd.read_csv("Data/MOSFET/2021-03-07/MOSFET_IdVd_8.csv")
 points = 11
 index = 0
 x_datas = []
