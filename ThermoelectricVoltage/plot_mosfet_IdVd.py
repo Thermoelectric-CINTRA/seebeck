@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
 
-datas = pd.read_csv("Data/MOSFET/2021-03-07/MOSFET_IdVd_8.csv")
+datas = pd.read_csv("Data/MOSFET/2021-03-08/MOSFET_IdVd_4.csv")
 points = 11
 index = 0
 x_datas = []
@@ -38,7 +38,7 @@ while index_plot <= len(datas)/points-1:
     index_plot += 1
 
 # curve fit
-popt, _ = curve_fit(objective, x_conductaces[19:23], y_conductaces[19:23])
+popt, _ = curve_fit(objective, x_conductaces[22:30], y_conductaces[22:30])
 # summarize the parameter values
 a, b = popt
 print('y = %.5f * x + %.5f' % (a, b))
