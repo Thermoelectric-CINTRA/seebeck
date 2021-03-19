@@ -2,8 +2,11 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import numpy as np
 from scipy.optimize import curve_fit
+from datetime import datetime
 
-datas = pd.read_csv("Data/MOSFET/2021-03-08/MOSFET_IdVd_4.csv")
+date = datetime.now().date()
+fileName = "D:/CINTRA/characteristic/Database/{}/IV_Characteristic/IdVg/IdVg_0.csv".format(date)
+datas = pd.read_csv(fileName)
 points = 11
 index = 0
 x_datas = []

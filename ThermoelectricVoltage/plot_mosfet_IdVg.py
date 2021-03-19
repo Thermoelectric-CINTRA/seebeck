@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt 
 import pandas as pd 
 import numpy as np
+from datetime import datetime
 
-datas = pd.read_csv("testing-MOSFET_IdVg.csv")
+date = datetime.now().date()
+fileName = "D:/CINTRA/characteristic/Database/{}/IV_Characteristic/IdVg/IdVg_0.csv".format(date)
+datas = pd.read_csv(fileName)
 
 index = 0
 x_datas = []
